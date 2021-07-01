@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Data Surat Masuk</title>
+    <link rel="stylesheet" href="css/datatable.min.css">
+    <link href="css/bootstrap.css" rel="stylesheet" />
+    <link href="css/styles.css" rel="stylesheet" />
+    <script src="font/font-awesome.min.js"></script>
+
+</head>
+
+<body class="sb-nav-fixed">
+    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+        <!-- Navbar Brand-->
+        <a class="navbar-brand ps-3 text-white" href="index.html">Sipas</a>
+        <!-- Sidebar Toggle-->
+        <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
+                class="fas fa-bars"></i></button>
+        <!-- Navbar Search-->
+        <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+            <div class="input-group">
+                <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..."
+                    aria-describedby="btnNavbarSearch" />
+                <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i
+                        class="fas fa-search"></i></button>
+            </div>
+        </form>
+        <!-- Navbar-->
+        <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
+                    aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="#!">Pengaturan</a></li>
+                    <li>
+                        <hr class="dropdown-divider" />
+                    </li>
+                    <li><a class="dropdown-item" href="#!">Keluar</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <div id="layoutSidenav">
+        <!-- Start Side Menu Navigation  -->
+        <div id="layoutSidenav_nav">
+            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                <div class="sb-sidenav-menu">
+                    <div class="nav">
+                        <a class="nav-link" href="index.html">
+                            <div class="sb-nav-link-icon"><i class="fas fa-home"></i></div>
+                            Dashboard
+                        </a>
+                        <!-- Master Data  -->
+                        <div class="sb-sidenav-menu-heading">Master Data</div>
+                        <a class="nav-link" href="instansi.html">
+                            <div class="sb-nav-link-icon"><i class="fas fa-building"></i></div>
+                            Data Instansi
+                        </a>
+                        <a class="nav-link" href="kategori.html">
+                            <div class="sb-nav-link-icon"><i class="fas fa-calendar"></i></div>
+                            Data Kategori
+                        </a>
+                        <a class="nav-link" href="pengguna.html">
+                            <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
+                            Data Pengguna
+                        </a>
+                        <!-- Master Surat  -->
+                        <div class="sb-sidenav-menu-heading">Master Surat</div>
+                        <a class="nav-link active" href="">
+                            <div class="sb-nav-link-icon"><i class="fas fa-download"></i></div>
+                            Data Surat Masuk
+                        </a>
+                        <a class="nav-link" href="">
+                            <div class="sb-nav-link-icon"><i class="fas fa-upload"></i></div>
+                            Data Surat Keluar
+                        </a>
+                        <!-- Disposisi Surat  -->
+                        <div class="sb-sidenav-menu-heading">Disposisi</div>
+                        <a class="nav-link" href="">
+                            <div class="sb-nav-link-icon"><i class="fas fa-clipboard-list"></i></div>
+                            Surat Masuk
+                        </a>
+                        <!-- Master Laporan  -->
+                        <div class="sb-sidenav-menu-heading">Master Laporan</div>
+                        <a class="nav-link" href="">
+                            <div class="sb-nav-link-icon"><i class="fas fa-file-download"></i></div>
+                            Laporan Surat Masuk
+                        </a>
+                        <a class="nav-link" href="">
+                            <div class="sb-nav-link-icon"><i class="fas fa-file-upload"></i></div>
+                            Laporan Surat Keluar
+                        </a>
+                    </div>
+                </div>
+                <!-- User Logged in  -->
+                <div class="sb-sidenav-footer">
+                    <div class="small">Masuk Sebagai:</div>
+                    Admin - Administrator
+                </div>
+            </nav>
+        </div>
+        <!-- End Side Menu Navigation  -->
+
+        <!-- Start Content Layout  -->
+        <div id="layoutSidenav_content">
+            <main>
+                <div class="container-fluid px-4">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h1 class="mt-2">Data Surat Masuk</h1>
+                            <ol class="breadcrumb mb-4">
+                                <li class="breadcrumb-item active">Data Surat Masuk</li>
+                            </ol>
+                        </div>
+                        <div>
+                            <button type="button" class="btn btn-primary shadow" data-bs-toggle="modal" data-bs-target="#newModal"><i class="fas fa-plus" aria-hidden="true"></i> Tambah Surat Masuk</button>
+                        </div>
+                    </div>
+
+                    <div class="card mb-4 shadow">
+                        <div class="card-header">
+                            <i class="fas fa-calendar me-1"></i>
+                            Data Surat Masuk
+                        </div>
+                        <div class="card-body table-responsive">
+                            <table id="datatablesSimple" class="table table-bordered align-middle">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>No. Surat</th>
+                                        <th>Perihal Surat</th>
+                                        <th>Asal Surat</th>
+                                        <th>Tanggal Surat</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Dinas Kesehatan</td>
+                                        <td>Pemerintah Bangkalan</td>
+                                        <td>kesehatan@gmail.com</td>
+                                        <td>08123456789</td>
+                                        <td>
+                                            <button class="btn btn-warning btn-sm text-white" type="button" data-bs-toggle="modal" data-bs-target="#editModal"> <i class="fas fa-edit"></i> Edit</button>
+                                            <button class="btn btn-danger btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#deleteModal"> <i class="fas fa-trash"></i> Hapus</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </main>
+            <footer class="py-4 bg-light mt-auto">
+                <div class="container-fluid px-4">
+                    <div class="d-flex align-items-center justify-content-between small">
+                        <div class="text-muted">Copyright &copy; Your Website 2021</div>
+                        <div>
+                            <a href="#">Privacy Policy</a>
+                            &middot;
+                            <a href="#">Terms &amp; Conditions</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+        <!-- EndContent Layout  -->
+
+        <!-- Modal New Category  -->
+        <div class="modal fade" id="newModal" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Tambahkan Kategori</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="mb-3">
+                                <label for="instansi" class="col-form-label">Nama Instansi:</label>
+                                <input type="text" class="form-control" id="instansi" placeholder="Dinas Kesehatan">
+                            </div>
+                            <div class="mb-3">
+                                <label for="lembaga" class="col-form-label">Nama Lembaga:</label>
+                                <input type="text" class="form-control" id="lembaga" placeholder="Pemerintah Bangkalan">
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="col-form-label">Email Instansi:</label>
+                                <input type="text" class="form-control" id="email" placeholder="kesehatan@gmail.com">
+                            </div>
+                            <div class="mb-3">
+                                <label for="telpon" class="col-form-label">Telpon Instansi:</label>
+                                <input type="text" class="form-control" id="telpon" placeholder="081234567897">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                        <button type="button" class="btn btn-primary">Simpan</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal New Category  -->
+
+        <!-- Modal Edit Category  -->
+        <div class="modal fade" id="editModal" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Edit Instansi</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="mb-3">
+                                <label for="instansi" class="col-form-label">Nama Instansi:</label>
+                                <input type="text" class="form-control" id="instansi" value="Dinas Kesehatan">
+                            </div>
+                            <div class="mb-3">
+                                <label for="lembaga" class="col-form-label">Nama Lembaga:</label>
+                                <input type="text" class="form-control" id="lembaga" value="Pemerintah Bangkalan">
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="col-form-label">Email Instansi:</label>
+                                <input type="text" class="form-control" id="email" value="kesehatan@gmail.com">
+                            </div>
+                            <div class="mb-3">
+                                <label for="telpon" class="col-form-label">Telpon Instansi:</label>
+                                <input type="text" class="form-control" id="telpon" value="081234567897">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                        <button type="button" class="btn btn-primary">Simpan</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal Edit Category  -->
+
+        <!-- Modal Delete Category  -->
+        <div class="modal fade" tabindex="-1" id="deleteModal">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Hapus Instansi</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Apakah anda yakin ingin menghapus instansi ini?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                        <button type="button" class="btn btn-danger">Hapus</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Modal Delete Category  -->
+    </div>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/scripts.js"></script>
+    <script src="js/jquery.datatables.min.js"></script>
+    <script src="js/datatables.min.js"></script>
+    <script src="js/chart.min.js"></script>
+    <script src="assets/demo/chart-area-demo.js"></script>
+    <script src="assets/demo/chart-bar-demo.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#datatablesSimple').DataTable();
+        });
+    </script>
+</body>
+
+</html>
